@@ -38,12 +38,12 @@ public class SortingDriver {
         printFirstTenOfArray(copy2);
         System.out.println("Time elapsed: " + stopWatch.getLastTaskTimeNanos() / 1_000_000.0 + " ms");
 
-        System.out.println("\nShell Sort...");
+       /* System.out.println("\nShell Sort...");
         stopWatch.start("Shell Sort");
         SortingUtility.shellSort(copy3);
         stopWatch.stop();
         printFirstTenOfArray(copy3);
-        System.out.println("Time elapsed: " + stopWatch.getLastTaskTimeNanos() / 1_000_000.0 + " ms");
+        System.out.println("Time elapsed: " + stopWatch.getLastTaskTimeNanos() / 1_000_000.0 + " ms");*/
 
         System.out.println("\n" + stopWatch.prettyPrint());
     }
