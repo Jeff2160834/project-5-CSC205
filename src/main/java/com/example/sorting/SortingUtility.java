@@ -58,10 +58,41 @@ public class SortingUtility {
          }
 
 
-         /*public static <T extends Comparable<T>> void shellSort(T[] a) {
+    public static <T extends Comparable<T>> void shellSort(T[] a) {
+        // Initialize the Ciura gap sequence for optimal performance
+        // Time Complexity: O(n log² n) average case with Ciura gaps
+        int[] gaps = {701, 301, 132, 57, 23, 10, 4, 1};
 
-        // TODO implement Shell Sort here
-         }*/
+        // Get the array length
+        int n = a.length;
+
+        // Start with the largest gap and work down to a gap of 1
+        // This reduces the array into smaller subarrays that are nearly sorted
+        for (int gap : gaps) {
+            // Skip gaps larger than the array length for efficiency
+            if (gap >= n) {
+                continue;
+            }
+
+            // Perform gapped insertion sort for the current gap
+            // This sorts elements that are 'gap' positions apart
+            for (int i = gap; i < n; i += 1) {
+                // Save a[i] in temp and create a hole at position i
+                T temp = a[i];
+
+                // Shift earlier gap-sorted elements up until the correct location for a[i] is found
+                // Elements greater than temp are shifted one gap position to the right
+                int j = i;
+                while (j >= gap && a[j - gap].compareTo(temp) > 0) {
+                    a[j] = a[j - gap];
+                    j -= gap;
+                }
+
+                // Put temp (the original a[i]) in its correct location
+                a[j] = temp;
+            }
+        }
+    }
 
 
      private static <T extends Comparable<T>> void swap(T[] data, int index1, int index2) {
