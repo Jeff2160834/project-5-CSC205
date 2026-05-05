@@ -310,4 +310,102 @@ public class SortingUtilityTest {
 		assertArrayEquals(expected, input);
 	}
 
+	// ------------------------- Additional Edge Case Tests ------------------------- //
+
+	@Test
+	@DisplayName("All sorts - null input throws NullPointerException")
+	public void testAllSorts_nullInput_throwsNullPointer() {
+		// Expect NPE when null array is passed (current implementations do not handle null)
+		assertThrows(NullPointerException.class, () -> SortingUtility.gnomeSort(null));
+		assertThrows(NullPointerException.class, () -> SortingUtility.cocktailShakerSort(null));
+		assertThrows(NullPointerException.class, () -> SortingUtility.shellSort(null));
+	}
+
+	@Test
+	@DisplayName("All sorts - array containing null elements throws NullPointerException")
+	public void testAllSorts_arrayWithNullElements_throwsNullPointer() {
+		Integer[] withNull = new Integer[]{1, null, 2};
+		assertThrows(NullPointerException.class, () -> SortingUtility.gnomeSort(withNull));
+		assertThrows(NullPointerException.class, () -> SortingUtility.cocktailShakerSort(withNull));
+		assertThrows(NullPointerException.class, () -> SortingUtility.shellSort(withNull));
+	}
+
+	@Test
+	@DisplayName("Custom Comparable objects sort correctly (ShellSort)")
+	public void testShellSort_customComparable_sortsCorrectly() {
+		// Local Comparable implementation
+		class MyComp implements Comparable<MyComp> {
+			final int v;
+			MyComp(int v) { this.v = v; }
+			@Override
+			public int compareTo(MyComp o) { return Integer.compare(this.v, o.v); }
+			@Override
+			public boolean equals(Object o) {
+				if (this == o) return true;
+				if (!(o instanceof MyComp)) return false;
+				return v == ((MyComp) o).v;
+			}
+			@Override
+			public int hashCode() { return Integer.hashCode(v); }
+			@Override
+			public String toString() { return Integer.toString(v); }
+		}
+
+		MyComp[] input = new MyComp[]{new MyComp(3), new MyComp(1), new MyComp(2), new MyComp(1)};
+		MyComp[] expected = Arrays.copyOf(input, input.length);
+		Arrays.sort(expected);
+		SortingUtility.shellSort(input);
+		assertArrayEquals(expected, input);
+	}
+
+	@Test
+	@DisplayName("GnomeSort - negative numbers and zeros sort correctly")
+	public void testGnomeSort_negativeNumbers_sortsCorrectly() {
+		Integer[] input = new Integer[]{0, -1, 5, -3, 2};
+		Integer[] expected = Arrays.copyOf(input, input.length);
+		Arrays.sort(expected);
+		SortingUtility.gnomeSort(input);
+		assertArrayEquals(expected, input);
+	}
+
+	@Test
+	@DisplayName("CocktailShakerSort - alternating high/low sequence sorts correctly")
+	public void testCocktailShakerSort_alternatingHighLow_sortsCorrectly() {
+		Integer[] input = new Integer[]{5, 1, 4, 2, 3};
+		Integer[] expected = Arrays.copyOf(input, input.length);
+		Arrays.sort(expected);
+		SortingUtility.cocktailShakerSort(input);
+		assertArrayEquals(expected, input);
+	}
+
+	@Test
+	@DisplayName("ShellSort - many duplicates sorts correctly")
+	public void testShellSort_manyDuplicates_sortsCorrectly() {
+		Integer[] input = new Integer[]{1,1,1,1,2,1,1};
+		Integer[] expected = Arrays.copyOf(input, input.length);
+		Arrays.sort(expected);
+		SortingUtility.shellSort(input);
+		assertArrayEquals(expected, input);
+	}
+
+	@Test
+	@DisplayName("All sorts - case-sensitive string ordering (String arrays)")
+	public void testAllSorts_stringCaseSensitivity_sortsConsistently() {
+		String[] input = new String[]{"Zebra", "apple", "Mango", "banana"};
+		String[] expected = Arrays.copyOf(input, input.length);
+		Arrays.sort(expected);
+
+		String[] a1 = Arrays.copyOf(input, input.length);
+		SortingUtility.gnomeSort(a1);
+		assertArrayEquals(expected, a1);
+
+		String[] a2 = Arrays.copyOf(input, input.length);
+		SortingUtility.cocktailShakerSort(a2);
+		assertArrayEquals(expected, a2);
+
+		String[] a3 = Arrays.copyOf(input, input.length);
+		SortingUtility.shellSort(a3);
+		assertArrayEquals(expected, a3);
+	}
+
 }
