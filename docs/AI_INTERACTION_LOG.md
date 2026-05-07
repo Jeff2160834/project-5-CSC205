@@ -2,7 +2,7 @@
     AI GENERATION DOCUMENTATION
     ===========================
     AI Tool Used: [GPT-5 mini]
-    Generation Date: [2-18-26]
+    Generation Date: [4-27-26]
     Original Prompt:
     "[I have here an example of a pseudo code: procedure gnomeSort(a[]):
     pos := 0
@@ -24,13 +24,16 @@ I want this to follow the pseudo code structure.]"
         [Fixed a few errors with changing private to public for the methods]
 
 
+How the Swap method works: The gnomeSort method moves through the array linearly, comparing each element with its predecessor:
+Swap usage: When a[pos] < a[pos-1] (out of order), the method calls swap(a, pos, pos - 1) (line 17) to exchange the two elements
+Logic flow: After swapping, it decrements pos to re-check the newly moved element against its new predecessor, effectively "bubbling" smaller elements backward until they're in the correct position
 
-
+-----------------------------------------------------------------------------------------------------------------------------------
 
     AI GENERATION DOCUMENTATION
     ===========================
     AI Tool Used: [Co-Pilot, GPT-5 mini]
-    Generation Date: [2-18-26]
+    Generation Date: [5-1-26]
     Original Prompt:
     "[I have here an example of a pseudo code: 
 procedure cocktailShakerSort(a : list of sortable items) is
@@ -67,10 +70,21 @@ For this algorithm I want to be sure we fully implement bidirectional sweeping b
         [N/A]
         [N/A]
 
+Hoe the swap method works: 
 
+This bidirectional bubble sort alternates between forward and backward passes:
+Forward pass: Iterates left-to-right (line 33), calling swap(a, i, i + 1) (line 36) when a[i] > a[i+1], pushing larger elements rightward
+Backward pass: Iterates right-to-left (line 50), calling swap(a, i, i + 1) (line 53) when a[i] > a[i+1], pushing smaller elements leftward
+Swap optimization: The swapped flag tracks if any swaps occurred; if the forward pass has no swaps, the array is sorted and the loop terminates early
+Bidirectional benefit: This reduces the number of passes compared to standard bubble sort by moving both extremes toward their final positions simultaneously
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+    AI GENERATION DOCUMENTATION
+    ===========================
 
 AI Tool Used: [Co-Pilot, GPT-5 mini]
-Generation Date: [2-18-26]
+Generation Date: [5-1-26]
 Original Prompt:
 "[I have here an example of a pseudo code presenting a shell sort algorithm: # Sort an array a[0...n-1].
 gaps = [701, 301, 132, 57, 23, 10, 4, 1]  # Ciura gap sequence
@@ -114,7 +128,7 @@ Manual Modifications:
 ---------------------------------------------------------------------------------------------
 
 AI Tool Used: [Co-Pilot, GPT-5 mini]
-Generation Date: [2-18-26]
+Generation Date: [5-1-26]
 Original Prompt:
 "["Yes we will now create comprehensive tests:
 Generate JUnit 5 unit tests for each of the sorting algorithms:
@@ -142,15 +156,9 @@ After generating tests, list any edge cases I should consider adding manually.
 "]"
 Follow-up Prompts (if any):
 
-    "[N/A]"
-
-    "[N/A]"
 
 Manual Modifications:
 
-    [List any changes you made to the AI output]
-
-    [Explain why changes were necessary]
 
 
 
@@ -158,14 +166,12 @@ Manual Modifications:
 ----------------------------------------------------------------------------------------------------
 
 AI Tool Used: [Co-Pilot, GPT-5 mini]
-Generation Date: [2-18-26]
+Generation Date: [5-2-26]
 Original Prompt:
 "["I would like to add the edge cases that were suggested earlier to be sure we are covering all tests."]"
-Follow-up Prompts (if any):
+
 
  
-
-Manual Modifications:
 
    
 

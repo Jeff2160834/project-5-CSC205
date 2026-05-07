@@ -63,3 +63,9 @@ I had to be careful and with AI tool I used because I noticed that same AI tools
 It was a very helpful tool for me to use for the testing of the algorithms and did not have to input too much of my own manual tests in the project.
 It did not become to redundant with the tests that it added and provided a clear and concise name for each test making it
 very easy to understand what each test was testing for. 
+
+Overall I would say that this project was a very good learning experience for understanding these three algorithms and how they works as well as how to utilize the given AI tools to assist with the implementation.
+I know know throughout all the projects this semester that I would change the way that I have used AI and will continue to change the way I was AI to assist with programming overall. 
+I know to be a lot more explicit with my prompts and make sure that I understand myself what it is that I am asking the AI to do and what I want it to generate for me. I have already made
+that mistake in this class. I am glad to be making these mistakes so that I can learn form it and be better prepared for the future when I will be using AI tools in my professional career. 
+I want to say thank you for everything you have taught me this semester and for the opportunity to learn and grow as a future software developer. 
